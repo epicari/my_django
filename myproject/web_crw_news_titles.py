@@ -23,7 +23,7 @@ def news_titles():
     
     return data
 
-if __name__ == "__main__":
+if __name__ == "__main__": # 이 파일이 단독 실행 할 경우
     news_dict = news_titles()
     for t, l in news_dict.items():
         News(news_titles=t, news_link=l).save()

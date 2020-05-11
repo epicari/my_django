@@ -16,6 +16,13 @@
              <p>{{ message }}</p>
              <button v-on: click="reverseMessage">Reverse Message</button>
          </div>
+         <div>
+             <form method = "POST">
+                 {% csrf_token %}
+                 <h5>news list</h5>
+                 {{ form.as_p }}
+             </form>
+        </div>
         <script>
             var app = new Vue({
                 el: '#app',
