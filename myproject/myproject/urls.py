@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from .routers import router
 from django.views.generic import TemplateView
+from news import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path('news', TemplateView.as_view(template_name='index.html')),
+    path('', views.index, name='index'),
+    path('news/', views.news, name='news'),
 ]

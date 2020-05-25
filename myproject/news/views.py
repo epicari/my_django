@@ -1,17 +1,12 @@
 from django.shortcuts import render
 from .forms import NewsForm
+from .models import News
 
 # Create your views here.
 
-def showForm(request):
-    form = NewsForm(resuest.POST or None)
-    
-    if form.is_valid():
-        form.save()
-    
-    context = {'form':form}
+def news(request):
+    form = News.objects.all()
+    return render(request, 'news.html', {'form':form})
 
-    #return render(request, 'templates/index.html', context)
-    return rander_to_response('templates/index.html',
-                               context, 
-                               context_instance=RequestContext(request))
+def index(request):
+    return render(request, 'index.html')

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+    {% for i in form %}
+        <main role="main" class="container">
+            <div class="jumbotron">
+                <h1>제목 : {{ i.news_titles }}</h1>
+                <br>
+                <h4>출처 : {{ i.news_link }}</h4>
+            </div>
+        </main>
+    {% endfor %}
+ 
+{% endblock %} 
