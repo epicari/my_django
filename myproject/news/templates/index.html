@@ -40,16 +40,15 @@
     <div class="inner">
       <h3 class="masthead-brand">My Django Web Crawler</h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a>
       </nav>
     </div>
   </header>
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">다음 IT 뉴스</h1>
     <p class="lead">
-      <a href="{% url 'news' %}" class="btn btn-lg btn-secondary">보기</a>
+      <a href="{% url 'dnews' %}" class="btn btn-lg btn-secondary">다음 IT 뉴스</a>
+    </p>
+    <p class="lead">
+      <a href="{% url 'nnews' %}" class="btn btn-lg btn-secondary">네이버 IT 뉴스</a>
     </p>
   </main>
 </div>

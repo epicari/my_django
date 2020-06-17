@@ -1,12 +1,16 @@
 from django.shortcuts import render
-from .forms import NewsForm
-from .models import News
+from .forms import DnewsForm, NnewsForm
+from .models import D_news, N_news
 
 # Create your views here.
 
-def news(request):
-    form = News.objects.all()
-    return render(request, 'news.html', {'form':form})
+def dnews(request):
+    d_form = D_news.objects.all()
+    return render(request, 'dnews.html', {'d_form':d_form})
+
+def nnews(request):
+    n_form = N_news.objects.all()
+    return render(request, 'nnews.html', {'n_form':n_form})
 
 def index(request):
     return render(request, 'index.html')
