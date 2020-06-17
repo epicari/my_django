@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .routers import router
 from django.views.generic import TemplateView
 from news import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('news/', views.news, name='news'),
+    path('daum/', views.dnews, name='dnews'),
+    path('naver/', views.nnews, name='nnews'),
 ]
