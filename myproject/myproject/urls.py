@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('daum/', views.dnews, name='dnews'),
+    path('info/', views.info, name='info'),
 ]

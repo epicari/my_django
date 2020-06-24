@@ -6,7 +6,7 @@
             <div class="jumbotron">
                 <h1>제목 : {{ i.dnews_titles }}</h1>
                 <br>
-                <h4>출처 : {{ i.dnews_links }}</h4>
+                <h4>출처 : <a href="{{ i.dnews_links }}">{{ i.dnews_links }}</a></h4>
             </div>
         </main>
     {% endfor %}

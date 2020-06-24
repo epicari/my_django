@@ -1,2 +1,3 @@
 .vscode
 my_venv
+secret_key.json
