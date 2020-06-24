@@ -32,9 +32,12 @@ class daum_titles(news_titles):
         
         return
 
-if __name__ == "__main__":
+class main:
     url = ['https://news.daum.net/breakingnews/digital']
     data = {}
     for i in url:
         news = daum_titles(i, data)
         news.daum_news()
+
+if __name__ == "__main__":
+    main()
