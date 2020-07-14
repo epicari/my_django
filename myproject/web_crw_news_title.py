@@ -1,43 +1,66 @@
+'''
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
 import django
 django.setup()
+'''
 from abc import ABCMeta, abstractmethod
 
-from news.models import D_news
+#from news.models import D_news, N_news
 
 import requests
 from bs4 import BeautifulSoup
 
-class news_titles(metaclass=ABCMeta):
-    def news_titles(self): pass
+class news(metaclass=ABCMeta): 
+    @abstractmethod
+    def news_titles(self, soup: str): pass
 
-class daum_titles(news_titles):
-    def __init__(self, url, data):
-        self.url = url
-        self.data = data
-
-    def daum_news(self):
-        r = requests.get(self.url)
-        html = r.content
-
-        soup = BeautifulSoup(html, 'html.parser')
+class daum(news):    
+    def news_titles(self, soup):
+        data = {}
         titles = soup.select('strong.tit_thumb > a')
 
         for title in titles:
-            self.data[title.text] = title.get('href')
+            data[title.text] = title.get('href')
 
-        for t, l in self.data.items():
-            D_news(dnews_titles=t, dnews_links=l).save()
+        for t, l in data.items():
+            #D_news(dnews_titles=t, dnews_links=l).save()
+            print('daum news: {0}{1}'.format(t, l))
         
         return
 
+class naver(news):    
+    def news_titles(self, soup):
+        data = {}
+        titles = soup.find_all('a', class_='cluster_text_headline nclicks(cls_sci.clsart)')
+
+        for title in titles:
+            data[title.text] = title.get('href')
+
+        for t, l in data.items():
+            #N_news(dnews_titles=t, dnews_links=l).save()
+            print('naver news: {0} {1}'.format(t, l))
+        
+        return   
+
+class news_title:
+    def getnews(self, soup, name):
+        return name.news_titles(soup)
+
 class main:
-    url = ['https://news.daum.net/breakingnews/digital']
-    data = {}
-    for i in url:
-        news = daum_titles(i, data)
-        news.daum_news()
+    def get_obj(self, url):
+        r = requests.get(url)
+        html = r.content
+        soup = BeautifulSoup(html, 'html.parser')
+        return soup
+
+    def main(self):
+        url = ['https://news.daum.net/breakingnews/digital',
+        'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105']
+        d = news_title()
+        d.getnews(self.get_obj(url[0]), daum())
+        n = news_title()
+        n.getnews(self.get_obj(url[1]), naver())
 
 if __name__ == "__main__":
-    main()
+    main().main()
