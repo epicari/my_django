@@ -30,7 +30,7 @@ SECRET_KEY = secretKey
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -87,6 +87,7 @@ DATABASES = {
     }
 }
 '''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -97,7 +98,17 @@ DATABASES = {
         'POST': '3306',
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTION': {
+            #'read_default_file': os.path.join(BASE_DIR, 'mysql.cnf'),
+            'read_default_file': 'myproject/mysql.cnf',
+        },
+    }
+}
+'''
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -137,7 +148,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'myproject' , 'static')
+    os.path.join(BASE_DIR, 'myproject' , 'static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

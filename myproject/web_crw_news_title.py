@@ -1,12 +1,12 @@
-'''
+
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
 import django
 django.setup()
-'''
+
 from abc import ABCMeta, abstractmethod
 
-#from news.models import D_news, N_news
+from news.models import D_news, N_news
 
 import requests
 from bs4 import BeautifulSoup
@@ -24,8 +24,7 @@ class daum(news):
             data[title.text] = title.get('href')
 
         for t, l in data.items():
-            #D_news(dnews_titles=t, dnews_links=l).save()
-            print('daum news: {0}{1}'.format(t, l))
+            D_news(dnews_titles=t, dnews_links=l).save()
         
         return
 
@@ -38,8 +37,7 @@ class naver(news):
             data[title.text] = title.get('href')
 
         for t, l in data.items():
-            #N_news(dnews_titles=t, dnews_links=l).save()
-            print('naver news: {0} {1}'.format(t, l))
+            N_news(nnews_titles=t, nnews_links=l).save()
         
         return   
 
@@ -56,7 +54,7 @@ class main:
 
     def main(self):
         url = ['https://news.daum.net/breakingnews/digital',
-        'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105']
+               'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105']
         d = news_title()
         d.getnews(self.get_obj(url[0]), daum())
         n = news_title()
