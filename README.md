@@ -8,6 +8,7 @@
 
 - WEB Crawler
   - Using Beautiful Soup4
+  - 다음 IT 뉴스 & 네이버 IT 뉴스 크롤링
 - DB
   - Using MySQL
 
@@ -28,7 +29,7 @@
 
 ### 설치 및 실행
 
-- Download source from GitHub repositories:
+1. Download source from GitHub repositories:
 
 ```
 mkdir git
@@ -37,13 +38,13 @@ git clone https://github.com/epicari/my_django.git
 cd my_django
 ```
 
-- Create a Virtual environment:
+2. Create a Virtual environment:
 
 ```
 python3 -m venv my_venv
 ```
 
-- On Windows, run:
+3. On Windows, run:
 
 ```
 my_venv\Scripts\Activate.ps1
@@ -55,23 +56,37 @@ my_venv\Scripts\Activate.ps1
 source my_venv/bin/activate
 ```
 
-- Install Python packages:
+- The name of the current virtual environment appears to the left of the prompt:
 
 ```
-pip install django, djangorestframework, bs4, request, mysqlclient
+(my_venv) PS C:\>
 ```
 
-- MySQL Connection to Application:
+4. Install Python packages:
 
 ```
-python .\manage.py makemigrations
-python .\manage.py migrate
+(my_venv) pip install django, djangorestframework, bs4, request, mysqlclient
 ```
 
-- Run:
+5. MySQL Connection to Application:
 
 ```
-python web_crw_news_title.py #You have to do it first... 
-python .\manage.py runserver
+(my_venv) cd myproject
+(my_venv) python .\manage.py makemigrations
+(my_venv) python .\manage.py migrate
 ```
 
+6. Run:
+
+```
+(my_venv) python web_crw_news_title.py #You have to do it first... 
+(my_venv) python .\manage.py runserver
+```
+
+
+
+### 추가 할 기능들
+
+- 게시판
+- 뉴스에 대한 제목, 요약, 링크 및 사진
+- 회원가입 및 로그인
