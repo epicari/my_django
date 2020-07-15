@@ -65,10 +65,28 @@ source my_venv/bin/activate
 4. Install Python packages:
 
 ```
-(my_venv) pip install django, djangorestframework, bs4, request, mysqlclient
+(my_venv) pip install django, djangorestframework, bs4, requests, mysqlclient
 ```
 
-5. MySQL Connection to Application:
+5. MySQL Setting:
+
+```
+mysql> CREATE DATABASE news;
+```
+
+- Create account:
+
+  ```
+  mysql> CREATE USER 'djangouser'@'%' IDENTIFIED WITH mysql_native_password BY 'django1234';
+  ```
+
+- Access to the database:
+
+  ```
+  mysql > GRANT ALL ON news.* TO 'djangouser'@'%';
+  ```
+
+6. MySQL Connection to Application:
 
 ```
 (my_venv) cd myproject
@@ -76,7 +94,7 @@ source my_venv/bin/activate
 (my_venv) python .\manage.py migrate
 ```
 
-6. Run:
+7. Run:
 
 ```
 (my_venv) python web_crw_news_title.py #You have to do it first... 
@@ -88,5 +106,14 @@ source my_venv/bin/activate
 ### 추가 할 기능들
 
 - 게시판
-- 뉴스에 대한 제목, 요약, 링크 및 사진
+- 뉴스에 대한 제목, 요약, 링크 및 사진 및 크롤러 자동실행
 - 회원가입 및 로그인
+
+
+
+### 참고
+
+- [1] django (https://www.djangoproject.com/)
+- [2] Django REST framework (https://www.django-rest-framework.org/)
+- [3] How To Create a Django App and Connect it to a Database (https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database)
+
