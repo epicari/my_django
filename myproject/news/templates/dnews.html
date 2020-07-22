@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
   
-    {% for i in d_form %}
-        <main role="main" class="container">
-            <div class="jumbotron">
-                <h1>제목 : {{ i.dnews_titles }}</h1>
-                <br>
-                <h4>출처 : <a href="{{ i.dnews_links }}">{{ i.dnews_links }}</a></h4>
-            </div>
-        </main>
-    {% endfor %}
- 
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+        <p style="margin-top: 100px;"></p>
+        <table class="table">
+            <thead>
+                <tr class="thead-dark">
+                    <th>제목</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in d_form %}
+                <tr>
+                    <td><a href="{{ i.dnews_links }}">{{ i.dnews_titles }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
 {% endblock %} 

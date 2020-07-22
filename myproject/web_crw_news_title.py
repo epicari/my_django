@@ -52,7 +52,7 @@ class main:
         soup = BeautifulSoup(html, 'html.parser')
         return soup
 
-    def main(self):
+    def run(self):
         url = ['https://news.daum.net/breakingnews/digital',
                'https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=105']
         d = news_title()
@@ -60,5 +60,4 @@ class main:
         n = news_title()
         n.getnews(self.get_obj(url[1]), naver())
 
-if __name__ == "__main__":
-    main().main()
+main().run()

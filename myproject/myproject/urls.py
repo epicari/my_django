@@ -23,4 +23,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('daum/', views.dnews, name='dnews'),
     path('naver/', views.nnews, name='nnews'),
+    path('detail/<int:q_id>/', views.detail, name='detail'),
+    path('question/create/', views.question_create, name='question_create'),
+    path('answer/create/<int:q_id>/', views.answer_create, name='answer_create'),
 ]
